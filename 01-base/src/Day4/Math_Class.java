@@ -16,5 +16,6 @@ public class Math_Class {
 		
 		System.out.println("Sin(30): " + Math.sin(30));
 		System.out.println("Log10(10): " + Math.log10(10));
+		
 	}
 }
