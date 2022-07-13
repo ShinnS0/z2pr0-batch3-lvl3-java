@@ -7,86 +7,108 @@ public class exception_assign2 {
 			
 			String[]division = {"Kachin","Kayar","Kayin","Chin","Sagaing","Tanintharyi","Bago","Magway","Mandalay","Mon","Rakhine","Yangon","Shan","Ayeyawady",};
 			String state = null;
-			
+			String s1;
 			try{
 				Scanner sc = new Scanner(System.in);
 				
 				System.out.print("Enter Your NRC State No : "); // 12/
-				String s1 = sc.nextLine();
-				String u1 = s1.substring(0, 3);
-				switch(s1) {
-				case "1/":
-					state = "Kachin";
-					break;
-				case "2/":
-					state = "Kayar";
-					break;
-				case "3/":
-					state = "Kayin";
-					break;
-				case "4/":
-					state = "Chin";
-					break;
-				case "5/":
-					state = "Sagaing";
-					break;
-				case "6/":
-					state = "Tanintharyi";
-					break;
-				case "7/":
-					state = "Bago";
-					break;
-				case "8/":
-					state = "Magway";
-					break;
-				case "9/":
-					state = "Mandalay";
-					break;
-				case "10/":
-					state = "Mon";
-					break;
-				case "11/":
-					state = "Rakhine";
-					break;
-				case "12/":
-					state = "Yangon";
-					break;
-				case "13/":
-					state = "Shan";
-					break;
-				case "14/":
-					state = "Ayeyawady";
-					break;
-				default:
-					state = "Unknown";
-				}
-				if(state.equals("Unknown")) {
-					System.err.println("The input NRC state No is Invalid");
-				}else {
+				String NRC = sc.nextLine();
 				
-				System.out.print("Enter Your NRC Township : ");
-				String s2 = sc.nextLine();
-				System.out.print("Enter Your NRC Citizens or not : ");
-				String s3 = sc.nextLine();
-				System.out.print("Enter Your NRC No : ");
-				String s4 = sc.nextLine();
-				
-				// NRC
-				System.out.println("Your NRCNO :" + s1 + s2 + s3 + s4);
-				
-				//State
-				System.out.println("Division/State : " + state);
-				
-				// Township
-				System.out.println("Township : " + s2);
-				
-				// NRC No
-				System.out.println("Number : " + s4);
+				for (int i = 0; i < NRC.length(); i++){
+		            if (NRC.charAt(i) == '/'){
+		            	s1 = NRC.substring(0, i);
+		            	System.out.println(s1);
+		            
+		            switch(s1) {
+					case "1":
+						state = "Kachin";
+						break;
+					case "2":
+						state = "Kayar";
+						break;
+					case "3":
+						state = "Kayin";
+						break;
+					case "4":
+						state = "Chin";
+						break;
+					case "5":
+						state = "Sagaing";
+						break;
+					case "6":
+						state = "Tanintharyi";
+						break;
+					case "7":
+						state = "Bago";
+						break;
+					case "8":
+						state = "Magway";
+						break;
+					case "9":
+						state = "Mandalay";
+						break;
+					case "10":
+						state = "Mon";
+						break;
+					case "11":
+						state = "Rakhine";
+						break;
+					case "12":
+						state = "Yangon";
+						break;
+					case "13":
+						state = "Shan";
+						break;
+					case "14":
+						state = "Ayeyawady";
+						break;
+					default:
+						state = "Unknown";
+					}
+					if(state.equals("Unknown")) {
+						System.err.println("The input NRC state No is Invalid");
+					}else {
+						// NRC
+						System.out.println("Your NRCNO :" + NRC);
+						
+						//State
+						System.out.println("Division/State : " + state);
+						
+						for (int x = 0; x < NRC.length(); x++){
+				            if (NRC.charAt(x) == '/'){
+				            	for(int j = 0; j < NRC.length(); j++) {
+				                	if (NRC.charAt(j) == '('){
+				                        String township = NRC.substring(i+1, j);
+				                        System.out.println("Township : "+ township);
+				                        break;
+				                   }
+				                }
+				            	for (int p = 0; p < NRC.length(); p++) {
+									if (NRC.charAt(p) == ')'){
+						                String number = NRC.substring(p+1);
+						                System.out.println("Number : "+number);
+						                break;
+									}
+				            	}          
+				            	 
+				            }
+						
+						}
+					
+					}
 				}
 			}
-			catch(ArrayIndexOutOfBoundsException e) {
-				System.err.print("The input NRC data is Invalid");
-			}
-			
-		}
+		}	
+		catch(ArrayIndexOutOfBoundsException e) {
+			System.err.print("The input NRC data is Invalid");
+		}	
+	}
 }
+
+
+	
+				
+				
+			
+		
+

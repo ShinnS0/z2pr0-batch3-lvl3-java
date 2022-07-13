@@ -26,12 +26,12 @@ public class Assignment2 {
 					System.out.print("When do you get up? (hh:mm:ss am/pm): ");
 					String time2 = sc.nextLine();
 					
-					DateFormat sdf = new SimpleDateFormat("hh:mm:ss aa");
-					Date Bedtime = sdf.parse(time);
-					Date Getup = sdf.parse(time2);
+					DateFormat sd = new SimpleDateFormat("hh:mm:ss aa");
+					Date Bedtime = sd.parse(time);
+					Date Getup = sd.parse(time2);
 					
-					System.out.println("Go bed : " + sdf.format(Bedtime));
-					System.out.println("Get up : " + sdf.format(Getup));
+					System.out.println("Go bed : " + sd.format(Bedtime));
+					System.out.println("Get up : " + sd.format(Getup));
 					
 						long start = Bedtime.getTime();
 					    long end = Getup.getTime();
