@@ -1,64 +1,28 @@
 package Day1.copy;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
 
+import java.util.Scanner;
 public class test {
 	
-	public static void main(String args[]) throws ParseException{
+public static void main(String[] args) {
 		
-		Scanner input = new Scanner(System.in);
-		 System.out.print("When do you go bed ?(hh:mm:ss am/pm): ");
-		 String time = input.nextLine();
-		 System.out.println();
-		 System.out.print("When do you get up? (hh:mm:ss am/pm): ");
-		 String time2 = input.nextLine();
-		 System.out.println();
-		 DateFormat sdf = new SimpleDateFormat("HH:mm:ss aa");
-		 Date goBed = sdf.parse(time);
-		 Date getUp = sdf.parse(time2);
+		String[] division = {"Kachin","Kayar","Kayin","Chin","Sagaing","Tanintharyi","Bago","Magway","Mandalay","Mon","Rakhine","Yangon","Shan","Ayeyawady",};
+		try (Scanner sc = new Scanner(System.in)){
+			String nrcno;
+			System.out.print("Enter Your nrcno: ");
+			nrcno = sc.nextLine();
+			
+			int index = Integer.parseInt(nrcno.substring(0,nrcno.indexOf("/")));
+			String township = nrcno.substring(nrcno.indexOf("/") + 1, nrcno.indexOf("("));
+			String number = nrcno.substring(nrcno.lastIndexOf(")")+1);
+			
 
-		 System.out.println("Go bed : " + sdf.format(goBed));
-		 System.out.println("Get up : " + sdf.format(getUp));
-		 
-
-		     long start = goBed.getTime();
-		     long end = getUp.getTime();
-		     
-			 if(goBed.getTime()> 43200000) {
-				  start = goBed.getTime() - 43200000;
-			 }
-			 else {
-				 start = goBed.getTime() + 43200000;
-			 }
-			 
-			 if(getUp.getTime()> 43200000) {
-				  end = getUp.getTime() - 43200000;
-			 }
-			 else {
-				  end = getUp.getTime() + 43200000;
-			 }
-			 
-			 long diffMs = end- start;
-		    
-
-		     long hour = (diffMs/ (3600*1000))%24; 
-		     
-		     long min = (diffMs / (60 * 1000)) % 60;
-		     long second = (diffMs /1000 )% 60;
-
-		     System.out.println("Sleep time hours is " + hour + "hours " +min + " minutes and "+ second +"seconds.");
-		     
-		     if(hour >= 5 && hour <= 8) {
-		    	 System.out.println("You take care your health well!");
-		     } 	 
-		     if(hour < 5){
-		    	 System.out.println("You are very hardworking!");
-		     }
-		     if(hour > 8){
-		    	 System.out.println("You are abnormal!");
-		     }
+			System.out.println("division/state: " + division[index - 1]);
+			System.out.println("Township: " + township);
+			System.out.println("number: " + number);
+			System.out.println("\nNrcno: " + nrcno);
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
+			System.err.print("Invalid division/state number ");
+		}
 	}
 }
