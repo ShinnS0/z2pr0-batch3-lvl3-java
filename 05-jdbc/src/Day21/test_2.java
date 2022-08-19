@@ -9,8 +9,8 @@ public class test_2 {
 
 	public static void main(String[] args) {
 		
-		saveMultipleObject();
-//		UpdateData();
+//		saveMultipleObject();
+		UpdateData();
 //		deleteData();
 //		retrieve_1();
 //		retrieve_2();
@@ -29,7 +29,8 @@ public class test_2 {
 			pstm.setInt(3, 1005);
 			
 			var rs = pstm.executeQuery();
-			
+			// rollback()
+			// commit()
 			while(rs.next()) {
 				System.out.println("NO: " + rs.getInt("emp_no"));
 				System.out.println("Name: " + rs.getString("name"));

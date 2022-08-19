@@ -8,7 +8,7 @@ public class Person{
 	private String name;
 	private String nrcno;
 	private String address;
-	private String phone;	
+	private String phone;
 	
 	//constructor
 	public Person(String name, String nrcno, String address, String phone) {
@@ -52,7 +52,6 @@ public class Person{
 		this.phone = phone;
 	}
 	
-	
 	//showInfo
 	public void ShowInfo() {
 		System.out.println("Name: " + name);
@@ -81,6 +80,10 @@ class Teacher extends Person{
 	private String position;
 	private String department;
 	private Integer salary;
+	
+	private String new_pos;
+	private String new_department;
+	private String new_salary;
 	
 	//constructor
 	public Teacher(String name, String nrcno, String address, String phone, String position, String department, Integer salary) {
@@ -115,10 +118,18 @@ class Teacher extends Person{
 		this.salary = salary;
 	}
 	
-	//promote
-	public void promote(String position,Integer salary) {
-		
+	public String getPositionA(String new_pos) {
+		return new_pos;
 	}
+	
+	public String getDepartmentA(String new_department) {
+		return new_department;
+	}
+	
+	public String getSalaryA(String new_salary) {
+		return new_salary;
+	}
+	
 	//promote
 	public void showTeacherInfo() {
 		ShowInfo();
@@ -128,29 +139,71 @@ class Teacher extends Person{
 		System.out.println("\nPosition : " + getPosition());
 		System.out.println("Department : " + getDepartment());
 		System.out.println("Salary : " + getSalary());
-		
-//		System.out.println("\nUpdate Position : " + getPosA("Assistant") + "\tSalary : " + getSalaryA("500000"));
-//		System.out.println("Department : " + getDepartment());
 	}
 	
 	//transfer
 	public void transfer() {
 		System.out.print("Enter department u want to transfer: ");
 		Scanner sc = new Scanner(System.in);
-		String new_department = sc.nextLine();
-		System.out.println("Department : " + new_department);
+		new_department = sc.nextLine();
+		
+		System.out.println("\nUpdate data!");
+//		ShowInfo();
+		System.out.println("Position : " + getPositionA(new_pos));
+		System.out.println("Department : " + getDepartmentA(new_department));
+		System.out.println("Salary : " + getSalaryA(new_salary));
 	}
 	
-	public void showTeacherInfo2(){
-		ShowInfo();
-		System.out.println();
-		ShowIdInfo();
+	//promote
+	public void promote(){
+		System.out.print("Enter position u want to promote: ");
+		Scanner sc = new Scanner(System.in);
+		new_pos = sc.nextLine();
+		System.out.print("Enter salary u want to rise: ");
+		Scanner sc1 = new Scanner(System.in);
+		new_salary = sc1.nextLine();
 		
-		System.out.println("\nPosition : " + getPosition());
+		System.out.println("\nUpdate data!");
+//		ShowInfo();
+		System.out.println("Position : " + getPositionA(new_pos));
 		System.out.println("Department : " + getDepartment());
-		System.out.println("Salary : " + getSalary());
+		System.out.println("Salary : " + getSalaryA(new_salary));
 		
-//		System.out.println("\nUpdate Position : " + getPosA("Lab") + "\tSalary : " + getSalaryA("300000"));
-		transfer();
+	}
+	//show latetest update DATA
+	public void show_latest_data() {
+		ShowInfo();
+		System.out.println("\nPosition : " + getPositionA(new_pos));
+		System.out.println("Department : " + getDepartmentA(new_department));
+		System.out.println("Salary : " + getSalaryA(new_salary));
+	}
+	
+	//forward
+	public void forward() {
+		System.out.println("1.Show teacher Info\n2.Promote\n3.Transfer\n4.Show latest update data\n5.Exit");
+		System.out.print("Enter option No: ");
+		Scanner sc = new Scanner(System.in);
+		var fw = sc.nextInt();
+		
+		if(fw == 1) {
+			showTeacherInfo();
+			System.out.println("----------------");
+			forward();
+		}else if(fw == 2) {
+			promote();
+			System.out.println("----------------");
+			forward();
+		}else if(fw == 3) {
+			transfer();
+			System.out.println("----------------");
+			forward();
+		}else if(fw == 4) {
+			show_latest_data();
+//			forward();
+		}else if(fw == 5){
+			System.out.println("Have a great day!");
+		}else {
+			System.err.println("There is no option No " + fw);
+		}
 	}
 }
